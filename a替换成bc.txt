@@ -1,0 +1,64 @@
+#include<iostream>
+using namespace std;
+
+char *str_replace( char *str,  char *str1,  char *str2)  
+{
+	char *p0=str;
+	char *p1=str1;
+	char *p2=str2;
+	char *p=new char[100];
+	char *a=p;
+	int n0=strlen(str);
+	int n1=strlen(str1);
+	int n2=strlen(str2);
+	char *temp=strstr(p0,p1);
+	if(temp==NULL)
+		return NULL;
+	else
+	{
+		while(p0<=temp)
+		{
+			*p++=*p0++;
+		}
+		while(*p2)
+		{
+			*p++=*p2++;
+		}
+		p0=temp+n1;
+		
+		while(temp!=NULL)
+		{
+			p1=str1;
+			p2=str2;
+			temp=strstr(p0,p1);
+			if(temp!=NULL)
+			{
+				while(p0<temp)
+				{
+					*p++=*p0++;
+				}
+				while(*p2)
+				{
+					*p++=*p2++;
+				}
+				p0=temp+n1;
+			}
+			else
+			{
+				while(*p0)
+				{
+					*p++=*p0++;
+				}			
+			}			
+		}		
+		*p='\0';
+		return a;
+	}	
+}
+
+void  main()
+{
+	char *str1="huangxinghuangxingaaaaa";
+    char *p= str_replace(str1,"a","bc");
+	printf("the string is %s\n",p);	
+}
